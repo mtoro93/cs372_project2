@@ -1,0 +1,15 @@
+#!/bin/tcsh
+
+set serverName = $argv[1]
+set serverPort = $argv[2]
+set cmnd = $argv[3]
+if ("$cmnd" == "-l") then
+set dataPort = $argv[4]
+python ftclient.py $serverName $serverPort $cmnd $dataPort
+else if ("$cmnd" == "-g") then
+set filename = $argv[4]
+set dataPort = $argv[5]
+python ftclient.py $serverName $serverPort $cmnd $filename $dataPort
+else
+python ftclient.py $serverName $serverPort $cmnd
+endif
